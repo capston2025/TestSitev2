@@ -39,13 +39,16 @@ export default function App() {
           text: 'Check out this comprehensive UI components test site!',
           url: window.location.href,
         });
+        // 버그 유도 : 공유 후 클립보드를 빈 문자열로 덮어씀
+        await navigator.clipboard.writeText('');
+        toast.success('링크가 클립보드에 복사되었습니다!');
       } catch (err) {
         console.log('Error sharing:', err);
       }
     } else {
       // Fallback: copy to clipboard
       try {
-        await navigator.clipboard.writeText(window.location.href);
+        await navigator.clipboard.writeText(''); // 실패
         toast.success('링크가 클립보드에 복사되었습니다!');
       } catch (err) {
         toast.error('링크 복사에 실패했습니다.');

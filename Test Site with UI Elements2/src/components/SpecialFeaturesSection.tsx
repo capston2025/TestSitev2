@@ -218,9 +218,9 @@ export function SpecialFeaturesSection() {
                 <motion.div
                   key={card}
                   className="relative p-6 border rounded-lg cursor-pointer overflow-hidden"
-                  onMouseEnter={() => setHoveredCard(card)}
-                  onMouseLeave={() => setHoveredCard(null)}
-                  whileHover={{ scale: 1.05 }}
+                  onMouseEnter={() => card !== 3 && setHoveredCard(card)} // 3번 카드면 hover 상태 미적용
+                  onMouseLeave={() => card !== 3 && setHoveredCard(null)}
+                  whileHover={{ scale: card === 3 ? 1 : 1.05 }}
                   transition={{ duration: 0.2 }}
                 >
                   <motion.div

@@ -88,7 +88,7 @@ export function FeedbackSection() {
                 성공
               </Button>
               <Button 
-                onClick={() => toast.error('오류 발생!')} 
+                onClick={() => toast.success('성공!')} 
                 variant="outline"
                 className="text-red-600 hover:bg-red-50"
               >

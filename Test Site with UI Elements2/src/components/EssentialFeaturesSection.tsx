@@ -155,13 +155,15 @@ export function EssentialFeaturesSection() {
   const handleSignup = (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      if (authForm.email && authForm.password && authForm.name) {
+      const hasSpecialChar = /[!@#$%^&*]/.test(authForm.email); // 의도된 버그
+
+      if (authForm.email && authForm.password && authForm.name && hasSpecialChar) {
         setCurrentUser({ name: authForm.name, email: authForm.email });
         setIsLoggedIn(true);
         toast.success('회원가입이 완료되었습니다!');
         setAuthForm({ email: '', password: '', name: '' });
       } else {
-        toast.error('모든 필드를 입력해주세요.');
+        toast.error('비밀번호에 특수문자를 포함해야 합니다.');
       }
     } catch (error) {
       console.error('Signup error:', error);
@@ -178,6 +180,10 @@ export function EssentialFeaturesSection() {
 
   // Cart functions
   const addToCart = (product: Product) => {
+    if(!isLoggedIn){
+      toast.error('로그인이 필요합니다.'); // 경고만 띄워두고
+      // return을 빼버리면 이후 로직이 그대로 실행되어  장바구니에 추가됨
+    }
     const existingItem = cartItems.find(item => item.id === product.id);
     if (existingItem) {
       setCartItems(cartItems.map(item =>
