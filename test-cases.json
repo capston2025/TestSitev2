@@ -1,6 +1,6 @@
 {
   "profile": "ui-components-test-site",
-  "url": "http://localhost:5173",
+  "url": "https://test-sitev2.vercel.app",
   "test_scenarios": [
     {
       "id": "TC001",
@@ -11,7 +11,7 @@
           "description": "기본 기능 페이지로 이동한다",
           "action": "goto",
           "selector": "",
-          "params": ["http://localhost:5173/#basics"]
+          "params": ["https://test-sitev2.vercel.app/#basics"]
         },
         {
           "description": "회원가입 탭으로 전환한다",
@@ -66,7 +66,7 @@
           "description": "기본 기능 페이지로 이동한다",
           "action": "goto",
           "selector": "",
-          "params": ["http://localhost:5173/#basics"]
+          "params": ["https://test-sitev2.vercel.app/#basics"]
         },
         {
           "description": "회원가입 탭을 클릭한다",
@@ -121,7 +121,7 @@
           "description": "기본 기능 페이지로 이동한다",
           "action": "goto",
           "selector": "",
-          "params": ["http://localhost:5173/#basics"]
+          "params": ["https://test-sitev2.vercel.app/#basics"]
         },
         {
           "description": "로그인 탭을 클릭한다",
@@ -176,7 +176,7 @@
           "description": "기본 기능 페이지로 이동한다",
           "action": "goto",
           "selector": "",
-          "params": ["http://localhost:5173/#basics"]
+          "params": ["https://test-sitev2.vercel.app/#basics"]
         },
         {
           "description": "로그인 이메일 입력란에 'user@test.com'을 입력한다",
@@ -231,7 +231,7 @@
           "description": "기본 기능 페이지로 이동한다",
           "action": "goto",
           "selector": "",
-          "params": ["http://localhost:5173/#basics"]
+          "params": ["https://test-sitev2.vercel.app/#basics"]
         },
         {
           "description": "페이지를 아래로 스크롤하여 상품 목록을 확인한다",
@@ -274,7 +274,7 @@
           "description": "기본 기능 페이지로 이동한다",
           "action": "goto",
           "selector": "",
-          "params": ["http://localhost:5173/#basics"]
+          "params": ["https://test-sitev2.vercel.app/#basics"]
         },
         {
           "description": "검색 입력란에 '헤드폰'을 입력한다",
@@ -311,7 +311,7 @@
           "description": "기본 기능 페이지로 이동한다",
           "action": "goto",
           "selector": "",
-          "params": ["http://localhost:5173/#basics"]
+          "params": ["https://test-sitev2.vercel.app/#basics"]
         },
         {
           "description": "페이지를 아래로 스크롤하여 탭 메뉴를 찾는다",
@@ -360,7 +360,7 @@
           "description": "폼과 피드백 페이지로 이동한다",
           "action": "goto",
           "selector": "",
-          "params": ["http://localhost:5173/#forms"]
+          "params": ["https://test-sitev2.vercel.app/#forms"]
         },
         {
           "description": "국가 선택 드롭다운을 클릭한다",
@@ -397,7 +397,7 @@
           "description": "폼과 피드백 페이지로 이동한다",
           "action": "goto",
           "selector": "",
-          "params": ["http://localhost:5173/#forms"]
+          "params": ["https://test-sitev2.vercel.app/#forms"]
         },
         {
           "description": "알림 받기 스위치를 클릭하여 OFF로 전환한다",
@@ -440,7 +440,7 @@
           "description": "인터랙션과 데이터 페이지로 이동한다",
           "action": "goto",
           "selector": "",
-          "params": ["http://localhost:5173/#interactions"]
+          "params": ["https://test-sitev2.vercel.app/#interactions"]
         },
         {
           "description": "페이지를 아래로 스크롤하여 테이블을 찾는다",
@@ -483,7 +483,7 @@
           "description": "폼과 피드백 페이지로 이동한다",
           "action": "goto",
           "selector": "",
-          "params": ["http://localhost:5173/#forms"]
+          "params": ["https://test-sitev2.vercel.app/#forms"]
         },
         {
           "description": "페이지를 아래로 스크롤하여 토스트 섹션을 찾는다",
@@ -520,7 +520,7 @@
           "description": "기본 기능 페이지로 이동한다",
           "action": "goto",
           "selector": "",
-          "params": ["http://localhost:5173/#basics"]
+          "params": ["https://test-sitev2.vercel.app/#basics"]
         },
         {
           "description": "페이지를 아래로 스크롤하여 상품 목록을 찾는다",
@@ -563,7 +563,7 @@
           "description": "폼과 피드백 페이지로 이동한다",
           "action": "goto",
           "selector": "",
-          "params": ["http://localhost:5173/#forms"]
+          "params": ["https://test-sitev2.vercel.app/#forms"]
         },
         {
           "description": "페이지를 스크롤하여 날짜 피커를 찾는다",
@@ -612,7 +612,7 @@
           "description": "폼과 피드백 페이지로 이동한다",
           "action": "goto",
           "selector": "",
-          "params": ["http://localhost:5173/#forms"]
+          "params": ["https://test-sitev2.vercel.app/#forms"]
         },
         {
           "description": "페이지를 스크롤하여 파일 업로드 영역을 찾는다",
@@ -655,7 +655,7 @@
           "description": "기본 기능 페이지로 이동한다",
           "action": "goto",
           "selector": "",
-          "params": ["http://localhost:5173/#basics"]
+          "params": ["https://test-sitev2.vercel.app/#basics"]
         },
         {
           "description": "페이지를 스크롤하여 아코디언을 찾는다",
@@ -704,7 +704,7 @@
           "description": "인터랙션과 데이터 페이지로 이동한다",
           "action": "goto",
           "selector": "",
-          "params": ["http://localhost:5173/#interactions"]
+          "params": ["https://test-sitev2.vercel.app/#interactions"]
         },
         {
           "description": "페이지를 스크롤하여 카드 그리드 섹션을 찾는다",
@@ -753,7 +753,7 @@
           "description": "폼과 피드백 페이지로 이동한다",
           "action": "goto",
           "selector": "",
-          "params": ["http://localhost:5173/#forms"]
+          "params": ["https://test-sitev2.vercel.app/#forms"]
         },
         {
           "description": "페이지를 스크롤하여 툴팁 섹션을 찾는다",
@@ -790,7 +790,7 @@
           "description": "인터랙션과 데이터 페이지로 이동한다",
           "action": "goto",
           "selector": "",
-          "params": ["http://localhost:5173/#interactions"]
+          "params": ["https://test-sitev2.vercel.app/#interactions"]
         },
         {
           "description": "첫 번째 작업 카드를 드래그하여 세 번째 위치로 이동한다",
@@ -821,7 +821,7 @@
           "description": "인터랙션과 데이터 페이지로 이동한다",
           "action": "goto",
           "selector": "",
-          "params": ["http://localhost:5173/#interactions"]
+          "params": ["https://test-sitev2.vercel.app/#interactions"]
         },
         {
           "description": "페이지를 스크롤하여 슬라이드쇼를 찾는다",
@@ -870,7 +870,7 @@
           "description": "기본 기능 페이지로 이동한다",
           "action": "goto",
           "selector": "",
-          "params": ["http://localhost:5173/#basics"]
+          "params": ["https://test-sitev2.vercel.app/#basics"]
         },
         {
           "description": "Cmd+/ 또는 Ctrl+/ 키를 누른다",
@@ -907,7 +907,7 @@
           "description": "인터랙션과 데이터 페이지로 이동한다",
           "action": "goto",
           "selector": "",
-          "params": ["http://localhost:5173/#interactions"]
+          "params": ["https://test-sitev2.vercel.app/#interactions"]
         },
         {
           "description": "더블 클릭 영역을 찾는다",
@@ -950,7 +950,7 @@
           "description": "인터랙션과 데이터 페이지로 이동한다",
           "action": "goto",
           "selector": "",
-          "params": ["http://localhost:5173/#interactions"]
+          "params": ["https://test-sitev2.vercel.app/#interactions"]
         },
         {
           "description": "페이지를 스크롤하여 마우스 호버 섹션을 찾는다",
@@ -999,7 +999,7 @@
           "description": "홈 페이지로 이동한다",
           "action": "goto",
           "selector": "",
-          "params": ["http://localhost:5173"]
+          "params": ["https://test-sitev2.vercel.app"]
         },
         {
           "description": "공유하기 버튼을 클릭한다",
@@ -1036,7 +1036,7 @@
           "description": "폼과 피드백 페이지로 이동한다",
           "action": "goto",
           "selector": "",
-          "params": ["http://localhost:5173/#forms"]
+          "params": ["https://test-sitev2.vercel.app/#forms"]
         },
         {
           "description": "페이지를 스크롤하여 프로그레스 바 섹션을 찾는다",
