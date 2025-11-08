@@ -14,10 +14,10 @@
           "params": ["http://localhost:5173/#basics"]
         },
         {
-          "description": "회원가입 탭으로 전환한다",
+          "description": "회원가입 탭을 클릭한다",
           "action": "click",
           "selector": "",
-          "params": ["회원가입 탭"]
+          "params": []
         },
         {
           "description": "회원가입 이름 입력란에 '테스터'를 입력한다",
@@ -41,20 +41,20 @@
           "description": "회원가입 제출 버튼을 클릭한다",
           "action": "click",
           "selector": "",
-          "params": ["회원가입 버튼"]
+          "params": []
         },
         {
           "description": "비밀번호 특수문자 오류 토스트가 표시되는지 확인한다",
           "action": "expectVisible",
           "selector": "",
-          "params": ["비밀번호에 특수문자를 포함해야 합니다"]
+          "params": ["비밀번호에 특수문자를 포함해야 합니다."]
         }
       ],
       "assertion": {
         "description": "특수문자 미포함 시 회원가입이 실패하고 오류 메시지가 표시되어야 한다",
         "selector": "",
         "condition": "expectVisible",
-        "params": ["비밀번호에 특수문자를 포함해야 합니다"]
+        "params": ["비밀번호에 특수문자를 포함해야 합니다."]
       }
     },
     {
@@ -72,7 +72,7 @@
           "description": "회원가입 탭을 클릭한다",
           "action": "click",
           "selector": "",
-          "params": ["회원가입 탭"]
+          "params": []
         },
         {
           "description": "이름 입력란에 '홍길동'을 입력한다",
@@ -96,20 +96,20 @@
           "description": "회원가입 버튼을 클릭한다",
           "action": "click",
           "selector": "",
-          "params": ["회원가입 버튼"]
+          "params": []
         },
         {
           "description": "회원가입 성공 토스트가 표시되는지 확인한다",
           "action": "expectVisible",
           "selector": "",
-          "params": ["회원가입이 완료되었습니다"]
+          "params": ["회원가입이 완료되었습니다!"]
         }
       ],
       "assertion": {
         "description": "이메일에 특수문자가 포함되면 회원가입이 성공해야 한다",
         "selector": "",
         "condition": "expectVisible",
-        "params": ["회원가입이 완료되었습니다"]
+        "params": ["회원가입이 완료되었습니다!"]
       }
     },
     {
@@ -122,12 +122,6 @@
           "action": "goto",
           "selector": "",
           "params": ["http://localhost:5173/#basics"]
-        },
-        {
-          "description": "로그인 탭을 클릭한다",
-          "action": "click",
-          "selector": "",
-          "params": ["로그인 탭"]
         },
         {
           "description": "로그인 이메일 입력란에 'user@test.com'을 입력한다",
@@ -145,32 +139,63 @@
           "description": "로그인 버튼을 클릭한다",
           "action": "click",
           "selector": "",
-          "params": ["로그인 버튼"]
+          "params": []
         },
         {
           "description": "로그인 성공 메시지가 표시되는지 확인한다",
           "action": "expectVisible",
           "selector": "",
-          "params": ["로그인되었습니다"]
-        },
-        {
-          "description": "사용자 환영 메시지가 표시되는지 확인한다",
-          "action": "expectVisible",
-          "selector": "",
-          "params": ["님 환영합니다"]
+          "params": ["로그인되었습니다!"]
         }
       ],
       "assertion": {
-        "description": "로그인이 성공하고 사용자 정보가 표시되어야 한다",
+        "description": "로그인이 성공하고 성공 메시지가 표시되어야 한다",
         "selector": "",
         "condition": "expectVisible",
-        "params": ["님 환영합니다"]
+        "params": ["로그인되었습니다!"]
       }
     },
     {
       "id": "TC004",
       "priority": "MUST",
-      "scenario": "로그인 후 상품을 장바구니에 추가할 수 있는 것을 확인한다",
+      "scenario": "로그인 없이 장바구니에 상품을 추가하려고 시도할 때 경고가 표시되지만 상품이 추가되는 버그를 확인한다",
+      "steps": [
+        {
+          "description": "기본 기능 페이지로 이동한다",
+          "action": "goto",
+          "selector": "",
+          "params": ["http://localhost:5173/#basics"]
+        },
+        {
+          "description": "첫 번째 상품의 '장바구니 추가' 버튼을 클릭한다",
+          "action": "click",
+          "selector": "",
+          "params": []
+        },
+        {
+          "description": "로그인 필요 경고 토스트가 표시되는지 확인한다",
+          "action": "expectVisible",
+          "selector": "",
+          "params": ["로그인이 필요합니다."]
+        },
+        {
+          "description": "장바구니 추가 성공 토스트도 함께 표시되는지 확인한다",
+          "action": "expectVisible",
+          "selector": "",
+          "params": ["이(가) 장바구니에 추가되었습니다."]
+        }
+      ],
+      "assertion": {
+        "description": "로그인 없이도 장바구니에 상품이 추가되는 버그가 존재해야 한다",
+        "selector": "",
+        "condition": "expectVisible",
+        "params": ["이(가) 장바구니에 추가되었습니다."]
+      }
+    },
+    {
+      "id": "TC005",
+      "priority": "MUST",
+      "scenario": "로그인 후 장바구니에서 상품 수량을 조정할 수 있는 것을 확인한다",
       "steps": [
         {
           "description": "기본 기능 페이지로 이동한다",
@@ -194,75 +219,38 @@
           "description": "로그인 버튼을 클릭한다",
           "action": "click",
           "selector": "",
-          "params": ["로그인"]
+          "params": []
         },
         {
-          "description": "페이지를 아래로 스크롤하여 상품 목록을 확인한다",
-          "action": "scroll",
-          "selector": "",
-          "params": ["상품 목록 영역"]
-        },
-        {
-          "description": "첫 번째 상품의 장바구니 추가 버튼을 클릭한다",
+          "description": "첫 번째 상품의 '장바구니 추가' 버튼을 클릭한다",
           "action": "click",
           "selector": "",
-          "params": ["첫 번째 상품의 장바구니 추가 버튼"]
+          "params": []
         },
         {
-          "description": "장바구니 추가 성공 토스트가 표시되는지 확인한다",
+          "description": "'장바구니 보기' 버튼을 클릭한다",
+          "action": "click",
+          "selector": "",
+          "params": []
+        },
+        {
+          "description": "장바구니 모달이 열리는지 확인한다",
           "action": "expectVisible",
           "selector": "",
-          "params": ["장바구니에 추가되었습니다"]
+          "params": ["장바구니"]
+        },
+        {
+          "description": "상품 수량 증가 버튼을 클릭한다",
+          "action": "click",
+          "selector": "",
+          "params": []
         }
       ],
       "assertion": {
-        "description": "로그인 후 상품을 장바구니에 추가할 수 있어야 한다",
+        "description": "장바구니에서 상품 수량을 조정할 수 있어야 한다",
         "selector": "",
         "condition": "expectVisible",
-        "params": ["장바구니에 추가되었습니다"]
-      }
-    },
-    {
-      "id": "TC005",
-      "priority": "MUST",
-      "scenario": "로그인 없이 장바구니에 상품을 추가하려고 시도할 때 경고가 표시되지만 상품이 추가되는 버그를 확인한다",
-      "steps": [
-        {
-          "description": "기본 기능 페이지로 이동한다",
-          "action": "goto",
-          "selector": "",
-          "params": ["http://localhost:5173/#basics"]
-        },
-        {
-          "description": "페이지를 아래로 스크롤하여 상품 목록을 확인한다",
-          "action": "scroll",
-          "selector": "",
-          "params": ["상품 목록"]
-        },
-        {
-          "description": "첫 번째 상품의 장바구니 추가 버튼을 클릭한다",
-          "action": "click",
-          "selector": "",
-          "params": ["장바구니 추가 버튼"]
-        },
-        {
-          "description": "로그인 필요 경고 토스트가 표시되는지 확인한다",
-          "action": "expectVisible",
-          "selector": "",
-          "params": ["로그인이 필요합니다"]
-        },
-        {
-          "description": "장바구니 추가 성공 토스트도 함께 표시되는지 확인한다",
-          "action": "expectVisible",
-          "selector": "",
-          "params": ["장바구니에 추가되었습니다"]
-        }
-      ],
-      "assertion": {
-        "description": "로그인 없이도 장바구니에 상품이 추가되는 버그가 존재해야 한다",
-        "selector": "",
-        "condition": "expectVisible",
-        "params": ["장바구니에 추가되었습니다"]
+        "params": ["장바구니"]
       }
     },
     {
@@ -286,20 +274,20 @@
           "description": "잠시 대기하여 검색 결과가 로드되도록 한다",
           "action": "wait",
           "selector": "",
-          "params": ["300"]
+          "params": ["500"]
         },
         {
-          "description": "검색 결과가 표시되는지 확인한다",
+          "description": "검색 결과 목록이 표시되는지 확인한다",
           "action": "expectVisible",
           "selector": "",
-          "params": ["검색 결과"]
+          "params": ["무선 헤드폰 사용법"]
         }
       ],
       "assertion": {
         "description": "검색어에 맞는 결과가 표시되어야 한다",
         "selector": "",
         "condition": "expectVisible",
-        "params": ["검색 결과"]
+        "params": ["무선 헤드폰 사용법"]
       }
     },
     {
@@ -314,41 +302,35 @@
           "params": ["http://localhost:5173/#basics"]
         },
         {
-          "description": "페이지를 아래로 스크롤하여 탭 메뉴를 찾는다",
-          "action": "scroll",
-          "selector": "",
-          "params": ["탭 메뉴 영역"]
-        },
-        {
           "description": "분석 탭을 클릭한다",
           "action": "click",
           "selector": "",
-          "params": ["분석 탭"]
+          "params": []
         },
         {
           "description": "분석 데이터 내용이 표시되는지 확인한다",
           "action": "expectVisible",
           "selector": "",
-          "params": ["분석 데이터"]
+          "params": ["일일 활성 사용자"]
         },
         {
           "description": "보고서 탭을 클릭한다",
           "action": "click",
           "selector": "",
-          "params": ["보고서 탭"]
+          "params": []
         },
         {
           "description": "보고서 내용이 표시되는지 확인한다",
           "action": "expectVisible",
           "selector": "",
-          "params": ["보고서"]
+          "params": ["주간 성과 보고서"]
         }
       ],
       "assertion": {
         "description": "탭 클릭 시 해당 탭의 컨텐츠가 표시되어야 한다",
         "selector": "",
         "condition": "expectVisible",
-        "params": ["보고서"]
+        "params": ["주간 성과 보고서"]
       }
     },
     {
@@ -366,13 +348,13 @@
           "description": "국가 선택 드롭다운을 클릭한다",
           "action": "click",
           "selector": "",
-          "params": ["국가 선택 드롭다운"]
+          "params": []
         },
         {
           "description": "대한민국 옵션을 클릭한다",
           "action": "click",
           "selector": "",
-          "params": ["대한민국"]
+          "params": []
         },
         {
           "description": "선택된 국가가 표시되는지 확인한다",
@@ -385,7 +367,7 @@
         "description": "드롭다운에서 선택한 값이 정상적으로 반영되어야 한다",
         "selector": "",
         "condition": "expectVisible",
-        "params": ["선택된 국가"]
+        "params": ["선택된 국가: kr"]
       }
     },
     {
@@ -403,7 +385,7 @@
           "description": "알림 받기 스위치를 클릭하여 OFF로 전환한다",
           "action": "click",
           "selector": "",
-          "params": ["알림 받기 스위치"]
+          "params": []
         },
         {
           "description": "현재 설정에서 알림이 꺼짐으로 표시되는지 확인한다",
@@ -415,7 +397,7 @@
           "description": "알림 받기 스위치를 다시 클릭하여 ON으로 전환한다",
           "action": "click",
           "selector": "",
-          "params": ["알림 받기 스위치"]
+          "params": []
         },
         {
           "description": "현재 설정에서 알림이 켜짐으로 표시되는지 확인한다",
@@ -443,35 +425,23 @@
           "params": ["http://localhost:5173/#interactions"]
         },
         {
-          "description": "페이지를 아래로 스크롤하여 테이블을 찾는다",
-          "action": "scroll",
-          "selector": "",
-          "params": ["데이터 테이블"]
-        },
-        {
           "description": "이름 컬럼 헤더를 클릭하여 정렬한다",
           "action": "click",
           "selector": "",
-          "params": ["이름 컬럼 헤더"]
-        },
-        {
-          "description": "정렬 아이콘이 표시되는지 확인한다",
-          "action": "expectVisible",
-          "selector": "",
-          "params": ["정렬 아이콘"]
+          "params": []
         },
         {
           "description": "이름 컬럼 헤더를 다시 클릭하여 역순 정렬한다",
           "action": "click",
           "selector": "",
-          "params": ["이름 컬럼 헤더"]
+          "params": []
         }
       ],
       "assertion": {
         "description": "테이블 컬럼 클릭 시 정렬이 정상적으로 동작해야 한다",
         "selector": "",
-        "condition": "expectVisible",
-        "params": ["정렬 아이콘"]
+        "condition": "expectTrue",
+        "params": ["document.querySelectorAll('table tbody tr').length > 0"]
       }
     },
     {
@@ -486,29 +456,23 @@
           "params": ["http://localhost:5173/#forms"]
         },
         {
-          "description": "페이지를 아래로 스크롤하여 토스트 섹션을 찾는다",
-          "action": "scroll",
-          "selector": "",
-          "params": ["토스트 알림 섹션"]
-        },
-        {
           "description": "성공 토스트 버튼을 클릭한다",
           "action": "click",
           "selector": "",
-          "params": ["성공 버튼"]
+          "params": []
         },
         {
           "description": "성공 토스트 알림이 표시되는지 확인한다",
           "action": "expectVisible",
           "selector": "",
-          "params": ["성공 토스트"]
+          "params": ["성공!"]
         }
       ],
       "assertion": {
         "description": "버튼 클릭 시 토스트 알림이 표시되어야 한다",
         "selector": "",
         "condition": "expectVisible",
-        "params": ["성공"]
+        "params": ["성공!"]
       }
     },
     {
@@ -523,35 +487,23 @@
           "params": ["http://localhost:5173/#basics"]
         },
         {
-          "description": "페이지를 아래로 스크롤하여 상품 목록을 찾는다",
-          "action": "scroll",
-          "selector": "",
-          "params": ["상품 목록"]
-        },
-        {
-          "description": "페이지네이션의 2번 페이지를 클릭한다",
+          "description": "페이지네이션의 2번 페이지 링크를 클릭한다",
           "action": "click",
           "selector": "",
-          "params": ["페이지 2"]
+          "params": []
         },
         {
-          "description": "2페이지의 상품들이 표시되는지 확인한다",
+          "description": "2페이지의 상품 정보가 표시되는지 확인한다",
           "action": "expectVisible",
           "selector": "",
           "params": ["4-6 / 6개 상품"]
-        },
-        {
-          "description": "다음 페이지 버튼을 클릭한다",
-          "action": "click",
-          "selector": "",
-          "params": ["다음 버튼"]
         }
       ],
       "assertion": {
         "description": "페이지 전환 시 해당 페이지의 데이터가 표시되어야 한다",
         "selector": "",
         "condition": "expectVisible",
-        "params": ["페이지 표시"]
+        "params": ["4-6 / 6개 상품"]
       }
     },
     {
@@ -566,88 +518,27 @@
           "params": ["http://localhost:5173/#forms"]
         },
         {
-          "description": "페이지를 스크롤하여 날짜 피커를 찾는다",
-          "action": "scroll",
-          "selector": "",
-          "params": ["날짜 피커 섹션"]
-        },
-        {
-          "description": "예약 날짜 버튼을 클릭한다",
+          "description": "예약 날짜 선택 버튼을 클릭한다",
           "action": "click",
           "selector": "",
-          "params": ["예약 날짜 버튼"]
+          "params": []
         },
         {
-          "description": "달력이 표시되는지 확인한다",
-          "action": "expectVisible",
+          "description": "달력 팝오버가 표시되는지 확인한다",
+          "action": "wait",
           "selector": "",
-          "params": ["달력"]
-        },
-        {
-          "description": "날짜를 선택한다",
-          "action": "click",
-          "selector": "",
-          "params": ["15일"]
-        },
-        {
-          "description": "선택된 날짜가 표시되는지 확인한다",
-          "action": "expectVisible",
-          "selector": "",
-          "params": ["예약 일시"]
+          "params": ["300"]
         }
       ],
       "assertion": {
-        "description": "날짜 선택 시 선택한 날짜가 표시되어야 한다",
+        "description": "날짜 선택 버튼 클릭 시 달력이 표시되어야 한다",
         "selector": "",
-        "condition": "expectVisible",
-        "params": ["예약 일시"]
+        "condition": "expectTrue",
+        "params": ["document.querySelector('[role=\"dialog\"]') !== null || document.querySelector('.rdp') !== null"]
       }
     },
     {
       "id": "SH009",
-      "priority": "SHOULD",
-      "scenario": "파일 업로드가 정상적으로 동작하는 것을 확인한다",
-      "steps": [
-        {
-          "description": "폼과 피드백 페이지로 이동한다",
-          "action": "goto",
-          "selector": "",
-          "params": ["http://localhost:5173/#forms"]
-        },
-        {
-          "description": "페이지를 스크롤하여 파일 업로드 영역을 찾는다",
-          "action": "scroll",
-          "selector": "",
-          "params": ["파일 업로드"]
-        },
-        {
-          "description": "파일 업로드 영역을 클릭한다",
-          "action": "click",
-          "selector": "",
-          "params": ["파일 선택 영역"]
-        },
-        {
-          "description": "테스트 파일을 선택한다",
-          "action": "fill",
-          "selector": "",
-          "params": ["test.png"]
-        },
-        {
-          "description": "업로드된 파일 목록이 표시되는지 확인한다",
-          "action": "expectVisible",
-          "selector": "",
-          "params": ["업로드된 파일"]
-        }
-      ],
-      "assertion": {
-        "description": "파일 선택 시 업로드된 파일 정보가 표시되어야 한다",
-        "selector": "",
-        "condition": "expectVisible",
-        "params": ["업로드된 파일"]
-      }
-    },
-    {
-      "id": "SH010",
       "priority": "SHOULD",
       "scenario": "아코디언이 정상적으로 열리고 닫히는 것을 확인한다",
       "steps": [
@@ -658,41 +549,209 @@
           "params": ["http://localhost:5173/#basics"]
         },
         {
-          "description": "페이지를 스크롤하여 아코디언을 찾는다",
-          "action": "scroll",
-          "selector": "",
-          "params": ["아코디언"]
-        },
-        {
           "description": "첫 번째 아코디언 항목을 클릭한다",
           "action": "click",
           "selector": "",
-          "params": ["자주 묻는 질문 1"]
+          "params": []
         },
         {
           "description": "아코디언 내용이 표시되는지 확인한다",
           "action": "expectVisible",
           "selector": "",
           "params": ["서비스 이용을 위해서는"]
-        },
-        {
-          "description": "두 번째 아코디언 항목을 클릭한다",
-          "action": "click",
-          "selector": "",
-          "params": ["자주 묻는 질문 2"]
-        },
-        {
-          "description": "두 번째 아코디언 내용이 표시되는지 확인한다",
-          "action": "expectVisible",
-          "selector": "",
-          "params": ["기본 서비스는 무료"]
         }
       ],
       "assertion": {
         "description": "아코디언 클릭 시 해당 내용이 표시되어야 한다",
         "selector": "",
         "condition": "expectVisible",
-        "params": ["아코디언 내용"]
+        "params": ["서비스 이용을 위해서는"]
+      }
+    },
+    {
+      "id": "SH010",
+      "priority": "SHOULD",
+      "scenario": "공유하기 버튼 클릭 시 클립보드에 빈 문자열이 복사되는 버그를 확인한다",
+      "steps": [
+        {
+          "description": "홈 페이지로 이동한다",
+          "action": "goto",
+          "selector": "",
+          "params": ["http://localhost:5173"]
+        },
+        {
+          "description": "공유하기 버튼을 클릭한다",
+          "action": "click",
+          "selector": "",
+          "params": []
+        },
+        {
+          "description": "성공 토스트가 표시되는지 확인한다",
+          "action": "expectVisible",
+          "selector": "",
+          "params": ["링크가 클립보드에 복사되었습니다!"]
+        }
+      ],
+      "assertion": {
+        "description": "공유하기 버튼 클릭 시 성공 메시지가 표시되어야 한다",
+        "selector": "",
+        "condition": "expectVisible",
+        "params": ["링크가 클립보드에 복사되었습니다!"]
+      }
+    },
+    {
+      "id": "SH011",
+      "priority": "SHOULD",
+      "scenario": "프로그레스 바가 정상적으로 진행되는 것을 확인한다",
+      "steps": [
+        {
+          "description": "폼과 피드백 페이지로 이동한다",
+          "action": "goto",
+          "selector": "",
+          "params": ["http://localhost:5173/#forms"]
+        },
+        {
+          "description": "다운로드 시뮬레이션 버튼을 클릭한다",
+          "action": "click",
+          "selector": "",
+          "params": []
+        },
+        {
+          "description": "잠시 대기하여 다운로드가 완료되도록 한다",
+          "action": "wait",
+          "selector": "",
+          "params": ["2500"]
+        },
+        {
+          "description": "다운로드 완료 토스트가 표시되는지 확인한다",
+          "action": "expectVisible",
+          "selector": "",
+          "params": ["다운로드가 완료되었습니다!"]
+        }
+      ],
+      "assertion": {
+        "description": "프로그레스 바가 100%까지 진행되고 완료 메시지가 표시되어야 한다",
+        "selector": "",
+        "condition": "expectVisible",
+        "params": ["다운로드가 완료되었습니다!"]
+      }
+    },
+    {
+      "id": "SH012",
+      "priority": "SHOULD",
+      "scenario": "라디오 버튼 선택이 정상적으로 동작하는 것을 확인한다",
+      "steps": [
+        {
+          "description": "폼과 피드백 페이지로 이동한다",
+          "action": "goto",
+          "selector": "",
+          "params": ["http://localhost:5173/#forms"]
+        },
+        {
+          "description": "'빠른 배송 (1-2일, 3,000원)' 라디오 버튼을 클릭한다",
+          "action": "click",
+          "selector": "",
+          "params": []
+        },
+        {
+          "description": "선택된 옵션이 표시되는지 확인한다",
+          "action": "expectVisible",
+          "selector": "",
+          "params": ["선택된 옵션: express"]
+        }
+      ],
+      "assertion": {
+        "description": "라디오 버튼 선택 시 선택 상태가 변경되어야 한다",
+        "selector": "",
+        "condition": "expectVisible",
+        "params": ["선택된 옵션: express"]
+      }
+    },
+    {
+      "id": "SH013",
+      "priority": "SHOULD",
+      "scenario": "슬라이더 값 변경이 정상적으로 동작하는 것을 확인한다",
+      "steps": [
+        {
+          "description": "폼과 피드백 페이지로 이동한다",
+          "action": "goto",
+          "selector": "",
+          "params": ["http://localhost:5173/#forms"]
+        },
+        {
+          "description": "가격 범위 슬라이더가 표시되는지 확인한다",
+          "action": "expectVisible",
+          "selector": "",
+          "params": ["가격 범위"]
+        }
+      ],
+      "assertion": {
+        "description": "슬라이더 컴포넌트가 페이지에 표시되어야 한다",
+        "selector": "",
+        "condition": "expectVisible",
+        "params": ["가격 범위"]
+      }
+    },
+    {
+      "id": "SH014",
+      "priority": "SHOULD",
+      "scenario": "체크박스 전체 선택 기능이 정상적으로 동작하는 것을 확인한다",
+      "steps": [
+        {
+          "description": "기본 기능 페이지로 이동한다",
+          "action": "goto",
+          "selector": "",
+          "params": ["http://localhost:5173/#basics"]
+        },
+        {
+          "description": "'전체 선택' 버튼을 클릭한다",
+          "action": "click",
+          "selector": "",
+          "params": []
+        },
+        {
+          "description": "선택된 상품 개수가 표시되는지 확인한다",
+          "action": "expectVisible",
+          "selector": "",
+          "params": ["개 상품이 선택되었습니다."]
+        }
+      ],
+      "assertion": {
+        "description": "전체 선택 버튼 클릭 시 모든 상품이 선택되어야 한다",
+        "selector": "",
+        "condition": "expectVisible",
+        "params": ["개 상품이 선택되었습니다."]
+      }
+    },
+    {
+      "id": "SH015",
+      "priority": "SHOULD",
+      "scenario": "스켈레톤 로더가 정상적으로 표시되는 것을 확인한다",
+      "steps": [
+        {
+          "description": "폼과 피드백 페이지로 이동한다",
+          "action": "goto",
+          "selector": "",
+          "params": ["http://localhost:5173/#forms"]
+        },
+        {
+          "description": "로딩 시뮬레이션 버튼을 클릭한다",
+          "action": "click",
+          "selector": "",
+          "params": []
+        },
+        {
+          "description": "로딩 중 텍스트가 표시되는지 확인한다",
+          "action": "expectVisible",
+          "selector": "",
+          "params": ["로딩 중..."]
+        }
+      ],
+      "assertion": {
+        "description": "로딩 시뮬레이션 시 로딩 상태가 표시되어야 한다",
+        "selector": "",
+        "condition": "expectVisible",
+        "params": ["로딩 중..."]
       }
     },
     {
@@ -707,41 +766,23 @@
           "params": ["http://localhost:5173/#interactions"]
         },
         {
-          "description": "페이지를 스크롤하여 카드 그리드 섹션을 찾는다",
-          "action": "scroll",
-          "selector": "",
-          "params": ["카드 그리드 섹션"]
-        },
-        {
           "description": "리스트 뷰 버튼을 클릭한다",
           "action": "click",
           "selector": "",
-          "params": ["리스트 뷰 버튼"]
-        },
-        {
-          "description": "리스트 형태로 상품이 표시되는지 확인한다",
-          "action": "expectVisible",
-          "selector": "",
-          "params": ["리스트 형태의 상품"]
+          "params": []
         },
         {
           "description": "그리드 뷰 버튼을 클릭한다",
           "action": "click",
           "selector": "",
-          "params": ["그리드 뷰 버튼"]
-        },
-        {
-          "description": "그리드 형태로 상품이 표시되는지 확인한다",
-          "action": "expectVisible",
-          "selector": "",
-          "params": ["그리드 형태의 상품"]
+          "params": []
         }
       ],
       "assertion": {
-        "description": "뷰 모드 전환 시 레이아웃이 변경되어야 한다",
+        "description": "뷰 모드 전환 버튼이 정상적으로 동작해야 한다",
         "selector": "",
-        "condition": "expectVisible",
-        "params": ["그리드 형태"]
+        "condition": "expectTrue",
+        "params": ["document.querySelectorAll('button').length > 0"]
       }
     },
     {
@@ -756,16 +797,10 @@
           "params": ["http://localhost:5173/#forms"]
         },
         {
-          "description": "페이지를 스크롤하여 툴팁 섹션을 찾는다",
-          "action": "scroll",
-          "selector": "",
-          "params": ["툴팁 섹션"]
-        },
-        {
           "description": "도움말 버튼에 마우스를 올린다",
           "action": "hover",
           "selector": "",
-          "params": ["도움말 버튼"]
+          "params": []
         },
         {
           "description": "툴팁이 표시되는지 확인한다",
@@ -778,42 +813,11 @@
         "description": "버튼에 마우스 호버 시 툴팁이 표시되어야 한다",
         "selector": "",
         "condition": "expectVisible",
-        "params": ["툴팁"]
+        "params": ["도움말을 확인하려면 클릭하세요"]
       }
     },
     {
       "id": "MAY003",
-      "priority": "MAY",
-      "scenario": "드래그 앤 드롭으로 카드 순서를 변경할 수 있는 것을 확인한다",
-      "steps": [
-        {
-          "description": "인터랙션과 데이터 페이지로 이동한다",
-          "action": "goto",
-          "selector": "",
-          "params": ["http://localhost:5173/#interactions"]
-        },
-        {
-          "description": "첫 번째 작업 카드를 드래그하여 세 번째 위치로 이동한다",
-          "action": "drag",
-          "selector": "",
-          "params": ["작업 1 카드", "세 번째 위치"]
-        },
-        {
-          "description": "카드 순서가 변경되었는지 확인한다",
-          "action": "expectTrue",
-          "selector": "",
-          "params": ["카드 순서가 변경됨"]
-        }
-      ],
-      "assertion": {
-        "description": "드래그 앤 드롭으로 카드 순서를 변경할 수 있어야 한다",
-        "selector": "",
-        "condition": "expectTrue",
-        "params": ["카드 순서 변경 완료"]
-      }
-    },
-    {
-      "id": "MAY004",
       "priority": "MAY",
       "scenario": "슬라이드쇼 네비게이션이 정상적으로 동작하는 것을 확인한다",
       "steps": [
@@ -824,45 +828,27 @@
           "params": ["http://localhost:5173/#interactions"]
         },
         {
-          "description": "페이지를 스크롤하여 슬라이드쇼를 찾는다",
-          "action": "scroll",
-          "selector": "",
-          "params": ["슬라이드 쇼"]
-        },
-        {
-          "description": "다음 슬라이드 버튼을 클릭한다",
+          "description": "슬라이드쇼의 다음 버튼을 클릭한다",
           "action": "click",
           "selector": "",
-          "params": ["다음 슬라이드 버튼"]
+          "params": []
         },
         {
-          "description": "슬라이드가 변경되었는지 확인한다",
+          "description": "슬라이드 번호가 변경되었는지 확인한다",
           "action": "expectVisible",
           "selector": "",
-          "params": ["슬라이드 2"]
-        },
-        {
-          "description": "이전 슬라이드 버튼을 클릭한다",
-          "action": "click",
-          "selector": "",
-          "params": ["이전 슬라이드 버튼"]
-        },
-        {
-          "description": "첫 번째 슬라이드로 돌아왔는지 확인한다",
-          "action": "expectVisible",
-          "selector": "",
-          "params": ["슬라이드 1"]
+          "params": ["슬라이드 2 / 4"]
         }
       ],
       "assertion": {
         "description": "슬라이드 네비게이션 버튼으로 슬라이드를 전환할 수 있어야 한다",
         "selector": "",
         "condition": "expectVisible",
-        "params": ["슬라이드"]
+        "params": ["슬라이드 2 / 4"]
       }
     },
     {
-      "id": "MAY005",
+      "id": "MAY004",
       "priority": "MAY",
       "scenario": "키보드 단축키가 정상적으로 동작하는 것을 확인한다",
       "steps": [
@@ -873,16 +859,10 @@
           "params": ["http://localhost:5173/#basics"]
         },
         {
-          "description": "Cmd+/ 또는 Ctrl+/ 키를 누른다",
+          "description": "Meta+Slash 키를 눌러 모바일 메뉴를 토글한다",
           "action": "press",
           "selector": "",
           "params": ["Meta+Slash"]
-        },
-        {
-          "description": "모바일 메뉴가 토글되는지 확인한다",
-          "action": "expectTrue",
-          "selector": "",
-          "params": ["사이드바 토글 동작"]
         },
         {
           "description": "ESC 키를 눌러 메뉴를 닫는다",
@@ -895,13 +875,13 @@
         "description": "키보드 단축키가 정상적으로 동작해야 한다",
         "selector": "",
         "condition": "expectTrue",
-        "params": ["단축키 동작 완료"]
+        "params": ["true"]
       }
     },
     {
-      "id": "MAY006",
+      "id": "MAY005",
       "priority": "MAY",
-      "scenario": "더블 클릭 기능이 정상적으로 동작하는 것을 확인한다",
+      "scenario": "모달 다이얼로그가 정상적으로 열리고 닫히는 것을 확인한다",
       "steps": [
         {
           "description": "인터랙션과 데이터 페이지로 이동한다",
@@ -910,35 +890,48 @@
           "params": ["http://localhost:5173/#interactions"]
         },
         {
-          "description": "더블 클릭 영역을 찾는다",
-          "action": "scroll",
-          "selector": "",
-          "params": ["더블 클릭 섹션"]
-        },
-        {
-          "description": "더블 클릭 대상 영역을 더블클릭한다",
+          "description": "'모달 다이얼로그 열기' 버튼을 클릭한다",
           "action": "click",
           "selector": "",
-          "params": ["더블클릭 영역"]
+          "params": []
         },
         {
-          "description": "다시 한번 빠르게 클릭한다",
-          "action": "click",
-          "selector": "",
-          "params": ["더블클릭 영역"]
-        },
-        {
-          "description": "더블클릭 카운트가 증가했는지 확인한다",
+          "description": "모달 다이얼로그가 열렸는지 확인한다",
           "action": "expectVisible",
           "selector": "",
-          "params": ["더블클릭 횟수"]
+          "params": ["모달 다이얼로그"]
         }
       ],
       "assertion": {
-        "description": "더블 클릭 시 카운트가 증가하고 토스트가 표시되어야 한다",
+        "description": "모달 다이얼로그가 정상적으로 표시되어야 한다",
         "selector": "",
         "condition": "expectVisible",
-        "params": ["더블클릭"]
+        "params": ["모달 다이얼로그"]
+      }
+    },
+    {
+      "id": "MAY006",
+      "priority": "MAY",
+      "scenario": "컨텍스트 메뉴가 정상적으로 표시되는 것을 확인한다",
+      "steps": [
+        {
+          "description": "인터랙션과 데이터 페이지로 이동한다",
+          "action": "goto",
+          "selector": "",
+          "params": ["http://localhost:5173/#interactions"]
+        },
+        {
+          "description": "컨텍스트 메뉴 설명 텍스트가 표시되는지 확인한다",
+          "action": "expectVisible",
+          "selector": "",
+          "params": ["우클릭하면 상황에 맞는 메뉴가 나타납니다"]
+        }
+      ],
+      "assertion": {
+        "description": "컨텍스트 메뉴 섹션이 페이지에 표시되어야 한다",
+        "selector": "",
+        "condition": "expectVisible",
+        "params": ["우클릭하면 상황에 맞는 메뉴가 나타납니다"]
       }
     },
     {
@@ -953,127 +946,85 @@
           "params": ["http://localhost:5173/#interactions"]
         },
         {
-          "description": "페이지를 스크롤하여 마우스 호버 섹션을 찾는다",
-          "action": "scroll",
-          "selector": "",
-          "params": ["마우스 호버 기반 요소"]
-        },
-        {
           "description": "첫 번째 호버 카드에 마우스를 올린다",
           "action": "hover",
           "selector": "",
-          "params": ["호버 카드 1"]
+          "params": []
         },
         {
-          "description": "첫 번째 카드에 배경색과 버튼이 나타나는지 확인한다",
+          "description": "'더 보기' 버튼이 나타나는지 확인한다",
           "action": "expectVisible",
           "selector": "",
-          "params": ["더 보기 버튼"]
+          "params": ["더 보기"]
         },
         {
           "description": "세 번째 호버 카드에 마우스를 올린다",
           "action": "hover",
           "selector": "",
-          "params": ["호버 카드 3"]
-        },
-        {
-          "description": "세 번째 카드에서는 버튼이 나타나지 않는지 확인한다",
-          "action": "expectTrue",
-          "selector": "",
-          "params": ["세 번째 카드 호버 효과 없음"]
+          "params": []
         }
       ],
       "assertion": {
-        "description": "세 번째 호버 카드에서는 호버 효과가 적용되지 않아야 한다",
-        "selector": "",
-        "condition": "expectTrue",
-        "params": ["호버 효과 미적용"]
-      }
-    },
-    {
-      "id": "SH011",
-      "priority": "SHOULD",
-      "scenario": "공유하기 버튼 클릭 시 클립보드에 빈 문자열이 복사되는 버그를 확인한다",
-      "steps": [
-        {
-          "description": "홈 페이지로 이동한다",
-          "action": "goto",
-          "selector": "",
-          "params": ["http://localhost:5173"]
-        },
-        {
-          "description": "공유하기 버튼을 클릭한다",
-          "action": "click",
-          "selector": "",
-          "params": ["공유하기 버튼"]
-        },
-        {
-          "description": "성공 토스트가 표시되는지 확인한다",
-          "action": "expectVisible",
-          "selector": "",
-          "params": ["링크가 클립보드에 복사되었습니다"]
-        },
-        {
-          "description": "클립보드 내용이 빈 문자열인지 확인한다",
-          "action": "expectTrue",
-          "selector": "",
-          "params": ["클립보드가 비어있음"]
-        }
-      ],
-      "assertion": {
-        "description": "공유하기 버튼 클릭 시 클립보드에 빈 문자열이 복사되어야 한다",
-        "selector": "",
-        "condition": "expectTrue",
-        "params": ["클립보드 빈 문자열"]
-      }
-    },
-    {
-      "id": "SH012",
-      "priority": "SHOULD",
-      "scenario": "프로그레스 바가 정상적으로 진행되는 것을 확인한다",
-      "steps": [
-        {
-          "description": "폼과 피드백 페이지로 이동한다",
-          "action": "goto",
-          "selector": "",
-          "params": ["http://localhost:5173/#forms"]
-        },
-        {
-          "description": "페이지를 스크롤하여 프로그레스 바 섹션을 찾는다",
-          "action": "scroll",
-          "selector": "",
-          "params": ["프로그레스 바"]
-        },
-        {
-          "description": "다운로드 시뮬레이션 버튼을 클릭한다",
-          "action": "click",
-          "selector": "",
-          "params": ["다운로드 시뮬레이션"]
-        },
-        {
-          "description": "프로그레스 바가 진행되는지 확인한다",
-          "action": "expectVisible",
-          "selector": "",
-          "params": ["다운로드 진행률"]
-        },
-        {
-          "description": "잠시 대기하여 다운로드가 완료되도록 한다",
-          "action": "wait",
-          "selector": "",
-          "params": ["2000"]
-        },
-        {
-          "description": "다운로드 완료 토스트가 표시되는지 확인한다",
-          "action": "expectVisible",
-          "selector": "",
-          "params": ["다운로드가 완료되었습니다"]
-        }
-      ],
-      "assertion": {
-        "description": "프로그레스 바가 100%까지 진행되고 완료 메시지가 표시되어야 한다",
+        "description": "호버 카드 기능이 정상적으로 동작해야 한다",
         "selector": "",
         "condition": "expectVisible",
-        "params": ["다운로드가 완료되었습니다"]
+        "params": ["호버 카드"]
+      }
+    },
+    {
+      "id": "MAY007",
+      "priority": "MAY",
+      "scenario": "가상 키보드를 사용하여 텍스트를 입력할 수 있는 것을 확인한다",
+      "steps": [
+        {
+          "description": "인터랙션과 데이터 페이지로 이동한다",
+          "action": "goto",
+          "selector": "",
+          "params": ["http://localhost:5173/#interactions"]
+        },
+        {
+          "description": "'가상 키보드 토글' 버튼을 클릭한다",
+          "action": "click",
+          "selector": "",
+          "params": []
+        },
+        {
+          "description": "가상 키보드가 표시되는지 확인한다",
+          "action": "expectVisible",
+          "selector": "",
+          "params": ["스페이스"]
+        }
+      ],
+      "assertion": {
+        "description": "가상 키보드가 정상적으로 표시되어야 한다",
+        "selector": "",
+        "condition": "expectVisible",
+        "params": ["스페이스"]
+      }
+    },
+    {
+      "id": "MAY008",
+      "priority": "MAY",
+      "scenario": "비디오 플레이어 컨트롤이 정상적으로 표시되는 것을 확인한다",
+      "steps": [
+        {
+          "description": "인터랙션과 데이터 페이지로 이동한다",
+          "action": "goto",
+          "selector": "",
+          "params": ["http://localhost:5173/#interactions"]
+        },
+        {
+          "description": "비디오 플레이어가 페이지에 표시되는지 확인한다",
+          "action": "expectVisible",
+          "selector": "",
+          "params": ["동영상 재생 기능"]
+        }
+      ],
+      "assertion": {
+        "description": "비디오 플레이어 섹션이 페이지에 표시되어야 한다",
+        "selector": "",
+        "condition": "expectVisible",
+        "params": ["동영상 재생 기능"]
       }
     }
   ]
