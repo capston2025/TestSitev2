@@ -13,7 +13,7 @@ import { CalendarIcon, Upload, FileText, Image, Video } from 'lucide-react';
 import { cn } from './ui/utils';
 
 export function FormSection() {
-  const [selectedOption, setSelectedOption] = useState('option1');
+  const [selectedOption, setSelectedOption] = useState('standard');
   const [notifications, setNotifications] = useState(true);
   const [emailAlerts, setEmailAlerts] = useState(false);
   const [selectedCountry, setSelectedCountry] = useState('');
@@ -65,7 +65,11 @@ export function FormSection() {
           <CardContent className="space-y-4">
             <div>
               <Label>배송 방법을 선택해주세요</Label>
-              <RadioGroup value={selectedOption} onValueChange={setSelectedOption} className="mt-2">
+              <RadioGroup
+                defaultValue="standard"
+                onValueChange={() => setSelectedOption('standard')}
+                className="mt-2"
+              >
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="standard" id="standard" />
                   <Label htmlFor="standard">일반 배송 (3-5일, 무료)</Label>
@@ -359,6 +363,7 @@ export function FormSection() {
                   type="file"
                   multiple
                   onChange={handleFileUpload}
+                  disabled // 버그: 파일 선택을 완전히 비활성화해 다이얼로그가 열리지 않음
                   className="sr-only"
                 />
               </div>

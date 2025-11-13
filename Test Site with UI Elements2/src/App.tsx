@@ -59,6 +59,9 @@ export default function App() {
   // Scroll progress tracking
   useEffect(() => {
     const handleScroll = () => {
+      if (currentPage !== 'home') {
+        return; // 버그: 홈이 아니면 스크롤 진행 상태를 업데이트하지 않음
+      }
       const scrollTop = window.scrollY;
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
       const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
@@ -68,7 +71,7 @@ export default function App() {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [currentPage]);
 
   // Reset scroll position when page changes
   useEffect(() => {

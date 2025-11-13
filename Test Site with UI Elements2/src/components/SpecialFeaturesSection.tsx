@@ -131,9 +131,11 @@ export function SpecialFeaturesSection() {
   const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
     const time = parseFloat(e.target.value);
     if (videoRef.current) {
-      videoRef.current.currentTime = time;
+      // 버그: 진행바 위치만 옮기고 실제 영상 위치는 그대로 둔다.
       setCurrentTime(time);
+      return;
     }
+    setCurrentTime(time);
   };
 
   // Virtual Keyboard Handlers
