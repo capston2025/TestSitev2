@@ -5,6 +5,7 @@ import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbP
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { Button } from './ui/button';
 import { Home, ChevronRight, Settings, User, Bell, Mail } from 'lucide-react';
+import { toast } from 'sonner@2.0.3';
 
 export function NavigationSection() {
   return (
@@ -82,15 +83,33 @@ export function NavigationSection() {
                   <div className="mt-4 space-y-2">
                     <div className="flex justify-between items-center p-2 border rounded">
                       <span>주간 성과 보고서</span>
-                      <Button variant="outline" size="sm">다운로드</Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => toast.error('다운로드에 실패했습니다.')}
+                      >
+                        다운로드
+                      </Button>
                     </div>
                     <div className="flex justify-between items-center p-2 border rounded">
                       <span>월간 분석 리포트</span>
-                      <Button variant="outline" size="sm">다운로드</Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => toast.error('다운로드에 실패했습니다.')}
+                      >
+                        다운로드
+                      </Button>
                     </div>
                     <div className="flex justify-between items-center p-2 border rounded">
                       <span>사용자 피드백 요약</span>
-                      <Button variant="outline" size="sm">다운로드</Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => toast.error('다운로드에 실패했습니다.')}
+                      >
+                        다운로드
+                      </Button>
                     </div>
                   </div>
                 </div>
