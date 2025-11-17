@@ -180,20 +180,19 @@ export function EssentialFeaturesSection() {
 
   // Cart functions
   const addToCart = (product: Product) => {
+    const sameCategoryProduct = cartItems.some(
+      item => item.category === product.category && item.id === product.id
+    );
+    if (sameCategoryProduct) {
+      return;
+    }
+
     if(!isLoggedIn){
       toast.error('로그인이 필요합니다.'); // 경고만 띄워두고
       // return을 빼버리면 이후 로직이 그대로 실행되어  장바구니에 추가됨
     }
-    const existingItem = cartItems.find(item => item.id === product.id);
-    if (existingItem) {
-      setCartItems(cartItems.map(item =>
-        item.id === product.id
-          ? { ...item, quantity: item.quantity + 1 }
-          : item
-      ));
-    } else {
-      setCartItems([...cartItems, { ...product, quantity: 1 }]);
-    }
+
+    setCartItems([...cartItems, { ...product, quantity: 1 }]);
     toast.success(`${product.name}이(가) 장바구니에 추가되었습니다.`);
   };
 
